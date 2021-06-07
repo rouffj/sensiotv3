@@ -22,12 +22,43 @@ class MovieController extends AbstractController
     }
 
     /**
-     * @Route("/details", name="details")
+     * @Route("/{movieId}", name="details", requirements={"movieId": "\d+"})
      */
-    public function details(): Response
+    public function details($movieId): Response
     {
-        return $this->render('movie/details.html.twig', [
-        ]);
+        return $this->render('movie/details.html.twig');
+    }
+
+    /**
+     * @Route("/genres", name="genres")
+     */
+    public function genres(): Response
+    {
+        return $this->render('movie/genres.html.twig');
+    }
+
+    /**
+     * @Route("/latest", name="latest")
+     */
+    public function latest(): Response
+    {
+        return $this->render('movie/latest.html.twig');
+    }
+
+    /**
+     * @Route("/{movieId}/player", name="player", requirements={"movieId": "\d+"})
+     */
+    public function player($movieId): Response
+    {
+        return $this->render('movie/player.html.twig');
+    }
+
+    /**
+     * @Route("/top-rated", name="top_rated")
+     */
+    public function topRated(): Response
+    {
+        return $this->render('movie/top-rated.html.twig');
     }
 
     /**
