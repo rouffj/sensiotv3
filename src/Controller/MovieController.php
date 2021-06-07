@@ -12,16 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class MovieController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
-     */
-    public function index(): Response
-    {
-        return $this->render('movie/index.html.twig', [
-            'controller_name' => 'MovieController',
-        ]);
-    }
-
-    /**
      * @Route("/{movieId}", name="details", requirements={"movieId": "\d+"})
      */
     public function details($movieId): Response
