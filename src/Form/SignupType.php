@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type as Type;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class SignupType extends AbstractType
 {
@@ -15,7 +16,9 @@ class SignupType extends AbstractType
         $builder
             ->add('login', Type\TextType::class)
             ->add('email', Type\EmailType::class)
-            ->add('password', Type\PasswordType::class)
+            ->add('password', Type\PasswordType::class, ['constraints' => [
+                new Assert\Length(null, 7)
+            ]])
         ;
     }
 
