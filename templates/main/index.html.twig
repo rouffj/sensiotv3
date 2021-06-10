@@ -7,7 +7,13 @@
             <div class="row">
                 <div class="col-md-12 mx-auto m-5">
                     <img class="m-5" src="/assets/images/sensiotv-icon.png" alt="SensioTV Brand Icon">
-                    <h2 class="display-3 font-weight-bold mb-5">All selections. In one place.</h2>
+                    <h2 class="display-3 font-weight-bold mb-5">
+                        {% if is_granted('ROLE_ADMIN') %}
+                        Glad to see an admin on this website 
+                        {% else  %}
+                        All selections. In one place.
+                        {% endif %}
+                    </h2>
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/movie", name="movie_")
@@ -17,6 +18,14 @@ class MovieController extends AbstractController
     public function details($movieId): Response
     {
         return $this->render('movie/details.html.twig');
+    }
+
+    /**
+     * @Route("/add", name="add")
+     */
+    public function addMovie(): Response
+    {
+        return new Response('You are on the add movie form because you have the role ROLE_EDITOR, congrats!');
     }
 
     /**
@@ -44,6 +53,11 @@ class MovieController extends AbstractController
     }
 
     /**
+     * 
+     * Just a test to see if access_control was executed first or the action. 
+     * It is the access_control.
+     * @IsGranted("ROLE_USER")
+     * 
      * @Route("/top-rated", name="top_rated")
      */
     public function topRated(): Response
